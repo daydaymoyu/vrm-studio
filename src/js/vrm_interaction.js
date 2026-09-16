@@ -224,6 +224,11 @@ export function setupUIHandlers(globals) {
       globals.camera.position.set(0, 3, 0.01);
       globals.controls.target.set(0, 0, 0);
     }
+    else if (mode === "back") {
+      // Z 轴设为负数，即绕到模型背后
+      globals.camera.position.set(0, 1.0, -2.5); 
+      globals.controls.target.set(0, 1.0, 0);
+    }
     globals.log(`Camera switched to: ${mode}`, "gray");
   };
 
@@ -251,6 +256,9 @@ export function setupUIHandlers(globals) {
         break;
       case "4":
         switchCamera("top");
+        break;
+      case "5": 
+        switchCamera("back"); 
         break;
     }
   });
